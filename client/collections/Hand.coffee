@@ -6,6 +6,7 @@ class window.Hand extends Backbone.Collection
 
   hit: ->
     @add(@deck.pop()).last()
+    @checkOverload()
 
   scores: ->
     # The scores are an array of potential scores.
@@ -18,3 +19,15 @@ class window.Hand extends Backbone.Collection
       score + if card.get 'revealed' then card.get 'value' else 0
     , 0
     if hasAce then [score, score + 10] else [score]
+
+  checkOverload: ->
+    if @scores()[0]>21 then @trigger('overLoaded')
+
+  stand: ->
+    if @isDealer
+      @.first().flip()
+      while @scores()[0] < 17
+        @add(@deck.pop()).last()
+      @trigger('standed')
+    # if @isDealer != true
+      # console.log "boom!"

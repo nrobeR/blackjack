@@ -9,9 +9,14 @@ class window.AppView extends Backbone.View
   events:
     "click .hit-button": -> @model.get('playerHand').hit()
     "click .stand-button": -> @model.get('playerHand').stand()
+    "click .stand-button": -> @model.get('dealerHand').stand()
 
   initialize: ->
     @render()
+    @model.get('playerHand').on 'overLoaded', => 
+      @model.youLost()
+    @model.get('dealerHand').on 'standed', =>
+      @model.checkGame()
 
   render: ->
     @$el.children().detach()
