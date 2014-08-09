@@ -10,17 +10,20 @@
       return AppView.__super__.constructor.apply(this, arguments);
     }
 
-    AppView.prototype.template = _.template('<button class="hit-button">Hit</button> <button class="stand-button">Stand</button> <div class="player-hand-container"></div> <div class="dealer-hand-container"></div>');
+    AppView.prototype.template = _.template('<button class="hit-button">Hit</button> <button class="stand-button">Stand</button> <button class="new-button">NewGame</button> <div class="player-hand-container"></div> <div class="dealer-hand-container"></div>');
 
     AppView.prototype.events = {
       "click .hit-button": function() {
         return this.model.get('playerHand').hit();
       },
       "click .stand-button": function() {
-        return this.model.get('playerHand').stand();
-      },
-      "click .stand-button": function() {
+        this.model.get('playerHand').stand();
         return this.model.get('dealerHand').stand();
+      },
+      "click .new-button": function() {
+        this.model.get('playerHand').reset([this.model.get('deck').pop(), this.model.get('deck').pop()]);
+        this.model.get('dealerHand').reset([this.model.get('deck').pop().flip(), this.model.get('deck').pop()]);
+        return this.render();
       }
     };
 
@@ -28,6 +31,7 @@
       this.render();
       this.model.get('playerHand').on('overLoaded', (function(_this) {
         return function() {
+          console.log("overLoaded");
           return _this.model.youLost();
         };
       })(this));

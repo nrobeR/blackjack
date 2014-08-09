@@ -21,6 +21,7 @@ class window.Hand extends Backbone.Collection
     if hasAce then [score, score + 10] else [score]
 
   checkOverload: ->
+    console.log @scores()[0]
     if @scores()[0]>21 then @trigger('overLoaded')
 
   stand: ->
@@ -29,5 +30,5 @@ class window.Hand extends Backbone.Collection
       while @scores()[0] < 17
         @add(@deck.pop()).last()
       @trigger('standed')
-    # if @isDealer != true
-      # console.log "boom!"
+    if @isDealer != true
+      console.log "boom!"

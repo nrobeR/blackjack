@@ -38,6 +38,7 @@
     };
 
     Hand.prototype.checkOverload = function() {
+      console.log(this.scores()[0]);
       if (this.scores()[0] > 21) {
         return this.trigger('overLoaded');
       }
@@ -49,7 +50,10 @@
         while (this.scores()[0] < 17) {
           this.add(this.deck.pop()).last();
         }
-        return this.trigger('standed');
+        this.trigger('standed');
+      }
+      if (this.isDealer !== true) {
+        return console.log("boom!");
       }
     };
 
