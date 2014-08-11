@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "Chip.js",
+  "sourceRoot": "../..",
+  "sources": [
+    "client/models/Chip.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,MAAA;mSAAA;;AAAA,EAAM,MAAM,CAAC;AAEX,2BAAA,CAAA;;;;KAAA;;AAAA,mBAAA,UAAA,GAAY,SAAC,MAAD,GAAA;aACX,IAAC,CAAA,GAAD,CACE;AAAA,QAAA,KAAA,EAAO,MAAP;OADF,EADW;IAAA,CAAZ,CAAA;;gBAAA;;KAFwB,QAAQ,CAAC,MAAnC,CAAA;AAAA"
+}

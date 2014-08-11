@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "CollectionBox.js",
+  "sourceRoot": "../..",
+  "sources": [
+    "client/collections/CollectionBox.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,MAAA;mSAAA;;AAAA,EAAM,MAAM,CAAC;AAEZ,oCAAA,CAAA;;;;KAAA;;AAAA,4BAAA,KAAA,GAAO,IAAP,CAAA;;yBAAA;;KAFkC,QAAQ,CAAC,WAA5C,CAAA;AAAA"
+}

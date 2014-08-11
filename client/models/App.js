@@ -10,10 +10,11 @@ window.App = (function(_super) {
   }
 
   App.prototype.initialize = function() {
-    var deck;
+    var deck, playerChips;
     this.set('deck', deck = new Deck());
     this.set('playerHand', deck.dealPlayer());
-    return this.set('dealerHand', deck.dealDealer());
+    this.set('dealerHand', deck.dealDealer());
+    return this.set('playerChips', playerChips = new ChipsCollection());
   };
 
   App.prototype.youLost = function() {

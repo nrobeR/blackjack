@@ -28,15 +28,19 @@ class window.AppView extends Backbone.View
     @model.get('dealerHand').on 'standed', =>
       @model.checkGame()
 
-    # @model.on 'change', =>
-    #   @model.get('playerHand').on 'overLoaded', =>
-    #     @model.youLost()
-    # @model.on 'change', =>
-    #   @model.get('dealerHand').on 'standed', =>
-    #     @model.checkGame()
+    @model.get('deck').on 'remove', =>
+      # console.log "test"
+      console.log @model.get('deck').length
+      # console.log @model.get('deck').refill
+      if @model.get('deck').length == 0
+        console.log "empty"
+        @model.get('deck').refill()
+
 
   render: ->
     @$el.children().detach()
     @$el.html @template()
     @$('.player-hand-container').html new HandView(collection: @model.get 'playerHand').el
     @$('.dealer-hand-container').html new HandView(collection: @model.get 'dealerHand').el
+    @$el.append '<div class=test>HELLO</div>'
+    @$el.append new ChipsView(collection: @model.get 'playerChips').el

@@ -12,6 +12,20 @@
 
     Deck.prototype.model = Card;
 
+    Deck.prototype.refill = function() {
+      var _i, _results;
+      return this.reset(_((function() {
+        _results = [];
+        for (_i = 0; _i < 52; _i++){ _results.push(_i); }
+        return _results;
+      }).apply(this)).shuffle().map(function(card) {
+        return new Card({
+          rank: card % 13,
+          suit: Math.floor(card / 13)
+        });
+      }));
+    };
+
     Deck.prototype.initialize = function() {
       var _i, _results;
       return this.add(_((function() {

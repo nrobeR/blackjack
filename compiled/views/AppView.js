@@ -35,9 +35,18 @@
           return _this.model.youLost();
         };
       })(this));
-      return this.model.get('dealerHand').on('standed', (function(_this) {
+      this.model.get('dealerHand').on('standed', (function(_this) {
         return function() {
           return _this.model.checkGame();
+        };
+      })(this));
+      return this.model.get('deck').on('remove', (function(_this) {
+        return function() {
+          console.log(_this.model.get('deck').length);
+          if (_this.model.get('deck').length === 0) {
+            console.log("empty");
+            return _this.model.get('deck').refill();
+          }
         };
       })(this));
     };
@@ -48,8 +57,12 @@
       this.$('.player-hand-container').html(new HandView({
         collection: this.model.get('playerHand')
       }).el);
-      return this.$('.dealer-hand-container').html(new HandView({
+      this.$('.dealer-hand-container').html(new HandView({
         collection: this.model.get('dealerHand')
+      }).el);
+      this.$el.append('<div class=test>HELLO</div>');
+      return this.$el.append(new ChipsView({
+        collection: this.model.get('playerChips')
       }).el);
     };
 
